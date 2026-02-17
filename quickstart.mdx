@@ -1,0 +1,72 @@
+---
+title: "Quickstart"
+description: "Get Quote Generator running locally in minutes"
+---
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- **Node.js** (version 14 or higher)
+- **npm** (comes with Node.js)
+- **Git** for cloning the repository
+
+## Installation
+
+<Steps>
+  <Step title="Clone the repository">
+    ```bash
+    git clone https://github.com/yangleyland/quoteGenerator.git
+    cd quoteGenerator
+    ```
+  </Step>
+  <Step title="Install dependencies">
+    ```bash
+    npm install
+    ```
+    This installs React, testing libraries, and other required packages.
+  </Step>
+  <Step title="Start the development server">
+    ```bash
+    npm start
+    ```
+    The app opens automatically at [http://localhost:3000](http://localhost:3000).
+  </Step>
+</Steps>
+
+## Using the app
+
+Once running, you'll see a centered quote box with:
+
+- A random quote displayed in the current theme color
+- A **New Quote** button to load a different quote
+- Social media buttons linking to Instagram and Twitter
+
+Click **New Quote** to:
+- Display a new random quote
+- Change the background color of the entire page
+- Update the button and text colors to match
+
+## Available commands
+
+| Command | Description |
+|---------|-------------|
+| `npm start` | Runs the app in development mode at localhost:3000 |
+| `npm test` | Launches the test runner in watch mode |
+| `npm run build` | Builds the app for production to the `build` folder |
+| `npm run eject` | Ejects from Create React App (irreversible) |
+
+<Warning>
+  The `eject` command is a one-way operation. Once you eject, you cannot go back. Only use this if you need full control over the build configuration.
+</Warning>
+
+## Next steps
+
+<CardGroup cols={2}>
+  <Card title="Customize quotes" icon="pen" href="/guides/customization">
+    Learn how to add your own quotes and colors.
+  </Card>
+  <Card title="Deploy your app" icon="cloud-arrow-up" href="/guides/deployment">
+    Build and deploy to production.
+  </Card>
+</CardGroup>

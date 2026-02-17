@@ -1,0 +1,50 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Quote Generator",
+  "description": "A React app that displays random quotes with dynamic color-changing backgrounds",
+  "colors": {
+    "primary": "#008080",
+    "light": "#20B2AA",
+    "dark": "#006666"
+  },
+  "favicon": "/favicon.svg",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": [
+              "index",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Guides",
+            "pages": [
+              "guides/customization",
+              "guides/deployment"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.svg",
+    "dark": "/logo/dark.svg"
+  },
+  "navbar": {
+    "primary": {
+      "type": "github",
+      "href": "https://github.com/yangleyland/quoteGenerator"
+    }
+  },
+  "footer": {
+    "socials": {
+      "github": "https://github.com/yangleyland/quoteGenerator"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+---
+title: "Quote Generator"
+description: "A React app that displays random inspirational quotes with dynamic color-changing backgrounds"
+---
+
+Quote Generator is a React application that presents users with random quotes, each displayed with a unique, dynamically changing background color. Click a button to get a new quote and watch the entire interface transform.
+
+## Features
+
+<CardGroup cols={2}>
+  <Card title="Random quotes" icon="quote-left">
+    Displays quotes from a curated collection, ensuring you see each quote before any repeats.
+  </Card>
+  <Card title="Dynamic colors" icon="palette">
+    Each new quote comes with a fresh background color, creating a unique visual experience.
+  </Card>
+  <Card title="Social sharing" icon="share">
+    Share your favorite quotes directly to Instagram and Twitter with built-in social buttons.
+  </Card>
+  <Card title="Responsive design" icon="mobile">
+    Works on desktop and mobile devices with a clean, centered quote box layout.
+  </Card>
+</CardGroup>
+
+## Quick start
+
+Get the app running locally in just a few commands.
+
+<Card
+  title="Installation guide"
+  icon="rocket"
+  href="/quickstart"
+  horizontal
+>
+  Clone the repository and start the development server.
+</Card>
+
+## How it works
+
+The app maintains a list of quotes and tracks which ones have been shown. When you click "New Quote":
+
+1. A random unvisited quote is selected
+2. A new background color is chosen from the color palette
+3. Both the quote text and all colored elements update simultaneously
+4. Once all quotes have been shown, the cycle resets
+
+## Tech stack
+
+- **React 18** - Component-based UI framework
+- **Create React App** - Project scaffolding and build tools
+- **CSS** - Custom styling with flexbox layout
+- **randomcolor** - Color generation library (available but not currently used)
+
+## Source code
+
+<Card
+  title="View on GitHub"
+  icon="github"
+  href="https://github.com/yangleyland/quoteGenerator"
+  horizontal
+>
+  Browse the source code, report issues, or contribute to the project.
+</Card>

@@ -1,0 +1,155 @@
+---
+title: "Deployment"
+description: "Build and deploy Quote Generator to production"
+---
+
+Quote Generator is a standard Create React App project, so it can be deployed to any static hosting service.
+
+## Building for production
+
+Create an optimized production build:
+
+```bash
+npm run build
+```
+
+This creates a `build` folder containing:
+- Minified JavaScript bundles
+- Optimized CSS
+- Static assets (images, icons)
+- An `index.html` entry point
+
+<Note>
+  The build process optimizes your app for the best performance. Files are minified and filenames include hashes for cache busting.
+</Note>
+
+## Deployment options
+
+### Vercel
+
+<Steps>
+  <Step title="Install Vercel CLI">
+    ```bash
+    npm install -g vercel
+    ```
+  </Step>
+  <Step title="Deploy">
+    ```bash
+    vercel
+    ```
+    Follow the prompts to connect your account and deploy.
+  </Step>
+</Steps>
+
+### Netlify
+
+<Steps>
+  <Step title="Build your app">
+    ```bash
+    npm run build
+    ```
+  </Step>
+  <Step title="Deploy via drag and drop">
+    Go to [Netlify Drop](https://app.netlify.com/drop) and drag your `build` folder.
+  </Step>
+</Steps>
+
+Or use the Netlify CLI:
+
+```bash
+npm install -g netlify-cli
+netlify deploy --prod --dir=build
+```
+
+### GitHub Pages
+
+<Steps>
+  <Step title="Install gh-pages">
+    ```bash
+    npm install --save-dev gh-pages
+    ```
+  </Step>
+  <Step title="Add homepage to package.json">
+    ```json
+    {
+      "homepage": "https://yourusername.github.io/quoteGenerator"
+    }
+    ```
+  </Step>
+  <Step title="Add deploy scripts">
+    ```json
+    {
+      "scripts": {
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
+      }
+    }
+    ```
+  </Step>
+  <Step title="Deploy">
+    ```bash
+    npm run deploy
+    ```
+  </Step>
+</Steps>
+
+### Docker
+
+Create a `Dockerfile` in your project root:
+
+```dockerfile
+FROM node:18-alpine as build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+Build and run:
+
+```bash
+docker build -t quote-generator .
+docker run -p 8080:80 quote-generator
+```
+
+## Environment variables
+
+If you add environment variables (for example, API keys), prefix them with `REACT_APP_`:
+
+```bash
+REACT_APP_API_KEY=your-api-key
+```
+
+Access them in your code:
+
+```javascript
+const apiKey = process.env.REACT_APP_API_KEY;
+```
+
+<Warning>
+  Never commit sensitive environment variables to your repository. Use `.env.local` for local development and set production variables in your hosting platform's dashboard.
+</Warning>
+
+## Troubleshooting
+
+### Build fails to minify
+
+If you encounter minification errors:
+
+1. Check for syntax errors in your JavaScript
+2. Ensure all dependencies are compatible with your Node version
+3. Try deleting `node_modules` and `package-lock.json`, then run `npm install` again
+
+### Blank page after deployment
+
+If your deployed app shows a blank page:
+
+1. Check the browser console for errors
+2. Verify the `homepage` field in `package.json` matches your deployment URL
+3. Ensure all asset paths are relative (the build process handles this automatically)

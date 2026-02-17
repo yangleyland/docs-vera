@@ -1,0 +1,159 @@
+---
+title: "Customization"
+description: "Add your own quotes and customize the color palette"
+---
+
+Quote Generator is designed to be easily customizable. You can add your own quotes, change the color palette, and modify the styling.
+
+## Adding quotes
+
+The quotes are stored in the `quoteSet` array in `src/App.js`. To add your own quotes:
+
+<Steps>
+  <Step title="Open App.js">
+    Navigate to `src/App.js` in your code editor.
+  </Step>
+  <Step title="Find the quoteSet array">
+    Look for the `quoteSet` constant near the top of the file:
+    
+    ```javascript
+    const quoteSet = [
+      "Love the life you live, live the life you love",
+      "Keep your friends close, but your enemies closer",
+      // ... more quotes
+    ];
+    ```
+  </Step>
+  <Step title="Add your quotes">
+    Add new quotes as strings in the array:
+    
+    ```javascript
+    const quoteSet = [
+      "Your new quote here",
+      "Another inspiring message",
+      // ... existing quotes
+    ];
+    ```
+  </Step>
+</Steps>
+
+<Note>
+  The app automatically cycles through all quotes before repeating any, so users will see every quote in your collection.
+</Note>
+
+## Customizing colors
+
+The color palette is defined in the `colorSet` array:
+
+```javascript
+const colorSet = [
+  "teal",
+  "purple",
+  "maroon",
+  "crimson",
+  "green",
+  "gold",
+  "brown",
+  "coral",
+  "DarkOliveGreen",
+  "IndianRed",
+  "LawnGreen"
+];
+```
+
+### Adding colors
+
+You can use any valid CSS color value:
+
+- **Named colors**: `"coral"`, `"navy"`, `"salmon"`
+- **Hex codes**: `"#FF5733"`, `"#3498DB"`
+- **RGB values**: `"rgb(52, 152, 219)"`
+- **HSL values**: `"hsl(204, 70%, 53%)"`
+
+```javascript
+const colorSet = [
+  "#008080",      // teal hex
+  "#6B5B95",      // ultra violet
+  "#88B04B",      // greenery
+  "coral",
+  // ... more colors
+];
+```
+
+<Tip>
+  Choose colors with good contrast against white text for the best readability on the quote box.
+</Tip>
+
+## Styling the quote box
+
+The quote box styling is defined in `src/App.css`. Key classes:
+
+| Class | Description |
+|-------|-------------|
+| `.quoteBox` | The main container for the quote display |
+| `.quoteText` | Styling for the quote text itself |
+| `button` | The "New Quote" button styles |
+| `.button1`, `.button2` | Social media button positioning |
+
+### Changing the quote box size
+
+Modify the `.quoteBox` class to change dimensions:
+
+```css
+.quoteBox {
+  margin: 0 auto;
+  width: 600px;        /* Change width here */
+  height: 200px;       /* Change height here */
+  background: white;
+  border-radius: 5px;
+  font-family: "lucida-handwriting";
+}
+```
+
+### Changing the font
+
+Update the `font-family` property:
+
+```css
+.quoteBox {
+  font-family: "Georgia", serif;
+  /* or */
+  font-family: "Arial", sans-serif;
+}
+```
+
+## Using the randomcolor library
+
+The project includes the `randomcolor` npm package, which you can use to generate colors programmatically instead of using a fixed palette:
+
+```javascript
+import randomColor from 'randomcolor';
+
+// In your randomQuote function:
+this.setState({ mainColor: randomColor() });
+
+// Generate specific hues:
+randomColor({ hue: 'blue' });
+randomColor({ luminosity: 'dark' });
+```
+
+<Note>
+  The current implementation uses a predefined color array, but the `randomcolor` package is already installed if you prefer dynamic color generation.
+</Note>
+
+## Updating social links
+
+The social media buttons link to Instagram and Twitter. Update these in `src/App.js`:
+
+```jsx
+<a href="https://www.instagram.com/your-username/">
+  <button className="button1 iconImg">
+    <img alt="" src={instagramIcon} />
+  </button>
+</a>
+<a href="https://twitter.com/your-username">
+  <button className="button2 iconImg">
+    <img alt="" src={twitterIcon} />
+  </button>
+</a>
+```
